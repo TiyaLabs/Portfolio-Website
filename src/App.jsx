@@ -69,21 +69,21 @@ function App() {
   };
 
   // Determine global background based on theme
-  let globalBg = "bg-slate-50 dark:bg-slate-950";
-  let sectionBg = "bg-white dark:bg-slate-900";
-  let sectionBgAlt = "bg-slate-50 dark:bg-slate-800";
-  let footerBg = "bg-slate-900 dark:bg-black";
+  let globalBg = "bg-neutral-50 dark:bg-neutral-950";
+  let sectionBg = "bg-white dark:bg-neutral-900";
+  let sectionBgAlt = "bg-neutral-100 dark:bg-neutral-800";
+  let footerBg = "bg-neutral-900 dark:bg-black";
 
   if (portfolioTheme === 'ds') {
     globalBg = "bg-blue-50/50 dark:bg-[#081226]";
     sectionBg = "bg-white dark:bg-[#0d1b38]";
-    sectionBgAlt = "bg-blue-50/80 dark:bg-[#0a152e]";
-    footerBg = "bg-blue-950 dark:bg-[#040b17]";
+    sectionBgAlt = "bg-blue-50 dark:bg-[#0a152e]";
+    footerBg = "bg-blue-900 dark:bg-[#040b17]";
   } else if (portfolioTheme === 'gd') {
     globalBg = "bg-orange-50/50 dark:bg-[#1a0f05]";
     sectionBg = "bg-white dark:bg-[#2a1808]";
-    sectionBgAlt = "bg-orange-50/80 dark:bg-[#211306]";
-    footerBg = "bg-[#1f1003] dark:bg-[#0d0701]";
+    sectionBgAlt = "bg-orange-50 dark:bg-[#211306]";
+    footerBg = "bg-orange-600 dark:bg-[#140801]";
   }
 
   return (

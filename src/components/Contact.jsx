@@ -1,10 +1,21 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Link, MessageCircle, Camera, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
+import { ThemeContext } from '../App';
 
 const Contact = () => {
   const containerRef = useRef(null);
+  const { portfolioTheme } = useContext(ThemeContext);
+  const isDS = portfolioTheme === 'ds' || portfolioTheme === 'split';
+
+  const accentGlowClass = isDS ? "bg-primary-blue/20" : "bg-orange-500/20";
+  const accentBorderHover = isDS ? "group-hover:border-primary-blue" : "group-hover:border-orange-500";
+  const accentBgHover = isDS ? "group-hover:bg-primary-blue" : "group-hover:bg-orange-500";
+  const accentBorderFocus = isDS ? "focus:border-primary-blue" : "focus:border-orange-500";
+  const accentTextFocus = isDS ? "peer-focus:text-primary-blue peer-valid:text-primary-blue" : "peer-focus:text-orange-500 peer-valid:text-orange-500";
+  const accentBtnBg = isDS ? "bg-primary-blue dark:bg-yellow-500" : "bg-orange-600 dark:bg-yellow-500";
+  const accentBtnHoverText = isDS ? "hover:text-primary-blue" : "hover:text-orange-600";
   
   useEffect(() => {
     // Magnetic button effect
@@ -39,7 +50,7 @@ const Contact = () => {
     <section id="contact" className="py-16 md:py-20 relative bg-transparent" ref={containerRef}>
       
       {/* Immersive Floating Glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-blue/20 rounded-full blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/3"></div>
+      <div className={`absolute top-0 right-0 w-[600px] h-[600px] ${accentGlowClass} rounded-full blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/3 transition-colors duration-700`}></div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
@@ -58,7 +69,7 @@ const Contact = () => {
 
             <div className="flex flex-col gap-6">
               <a href="mailto:Aufatir78@gmail.com" className="flex items-center gap-6 group w-max">
-                <div className="w-16 h-16 rounded-full border border-slate-700 flex items-center justify-center group-hover:bg-primary-blue group-hover:border-primary-blue transition-colors duration-300">
+                <div className={`w-16 h-16 rounded-full border border-slate-700 flex items-center justify-center ${accentBgHover} ${accentBorderHover} transition-colors duration-300`}>
                   <Mail size={24} className="text-slate-300 group-hover:text-white transition-colors" />
                 </div>
                 <div className="overflow-hidden">
@@ -86,22 +97,22 @@ const Contact = () => {
               
               <div className="p-10 flex flex-col gap-8">
                 <div className="relative group">
-                  <input type="text" id="name" required className="w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none focus:border-primary-blue transition-colors peer" placeholder=" " />
-                  <label htmlFor="name" className="absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary-blue peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold">What's your name?</label>
+                  <input type="text" id="name" required className={`w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none ${accentBorderFocus} transition-colors peer`} placeholder=" " />
+                  <label htmlFor="name" className={`absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs ${accentTextFocus} peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold`}>What's your name?</label>
                 </div>
 
                 <div className="relative group">
-                  <input type="email" id="email" required className="w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none focus:border-primary-blue transition-colors peer" placeholder=" " />
-                  <label htmlFor="email" className="absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary-blue peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold">Your email address</label>
+                  <input type="email" id="email" required className={`w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none ${accentBorderFocus} transition-colors peer`} placeholder=" " />
+                  <label htmlFor="email" className={`absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs ${accentTextFocus} peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold`}>Your email address</label>
                 </div>
 
                 <div className="relative group">
-                  <textarea id="message" required rows="3" className="w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none focus:border-primary-blue transition-colors peer resize-none" placeholder=" "></textarea>
-                  <label htmlFor="message" className="absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs peer-focus:text-primary-blue peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold">Tell me about the project</label>
+                  <textarea id="message" required rows="3" className={`w-full bg-transparent border-b border-slate-700 py-4 text-white text-lg focus:outline-none ${accentBorderFocus} transition-colors peer resize-none`} placeholder=" "></textarea>
+                  <label htmlFor="message" className={`absolute left-0 top-4 text-slate-500 text-lg peer-focus:-top-3 peer-focus:text-xs ${accentTextFocus} peer-valid:-top-3 peer-valid:text-xs transition-all uppercase tracking-widest font-bold`}>Tell me about the project</label>
                 </div>
 
                 <div className="pt-4">
-                  <button className="magnetic-btn w-32 h-32 rounded-full bg-primary-blue dark:bg-yellow-500 text-white dark:text-slate-900 flex flex-col items-center justify-center gap-2 hover:bg-white hover:text-primary-blue dark:hover:bg-white dark:hover:text-slate-900 transition-colors duration-300">
+                  <button className={`magnetic-btn w-32 h-32 rounded-full ${accentBtnBg} text-white dark:text-slate-900 flex flex-col items-center justify-center gap-2 hover:bg-white ${accentBtnHoverText} dark:hover:bg-white dark:hover:text-slate-900 transition-colors duration-300`}>
                     <span className="text-sm font-bold uppercase tracking-widest">Send</span>
                     <ArrowRight size={20} />
                   </button>
