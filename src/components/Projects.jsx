@@ -171,10 +171,10 @@ const Projects = () => {
       className="py-16 md:py-20 relative overflow-hidden bg-transparent" 
       ref={containerRef}
     >
-      {/* Semi-transparent color overlay that tints the background without hiding the fluid blobs */}
+      {/* Radial glow instead of flat background to avoid straight lines */}
       <div 
-        className="absolute inset-0 z-0 transition-colors duration-700 ease-in-out opacity-80 dark:opacity-60 mix-blend-multiply dark:mix-blend-screen"
-        style={{ backgroundColor: activeOverlay }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vh] max-w-[1500px] max-h-[1500px] rounded-full z-0 transition-colors duration-700 ease-in-out opacity-60 mix-blend-multiply dark:mix-blend-screen blur-[100px] md:blur-[150px]"
+        style={{ backgroundColor: activeOverlay !== 'transparent' ? activeOverlay : 'transparent' }}
       ></div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">

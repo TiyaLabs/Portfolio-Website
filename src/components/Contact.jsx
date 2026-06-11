@@ -36,7 +36,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <section id="contact" className="py-16 md:py-20 relative overflow-hidden bg-transparent" ref={containerRef}>
+    <section id="contact" className="py-16 md:py-20 relative bg-transparent" ref={containerRef}>
       
       {/* Immersive Floating Glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-blue/20 rounded-full blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/3"></div>
