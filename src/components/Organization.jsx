@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const organizations = [
   { role: "MPK Vice President", year: "2022 - 2023" },
@@ -17,26 +15,7 @@ const organizations = [
 const Organization = () => {
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(".org-item", 
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%"
-          }
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  // GSAP removed due to layout interference with Framer Motion parallax
 
   return (
     <section className="py-16 md:py-20 relative overflow-hidden bg-transparent" ref={containerRef}>
@@ -50,8 +29,12 @@ const Organization = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {organizations.map((org, index) => (
-            <div 
+            <motion.div 
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="org-item group flex flex-col justify-between bg-white/60 dark:bg-slate-900/40 backdrop-blur-md rounded-[2.5rem] p-8 md:p-10 border border-slate-200 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-2 cursor-pointer"
             >
               <div className="flex items-start justify-between mb-8">
@@ -66,7 +49,7 @@ const Organization = () => {
               <h3 className="text-2xl font-display font-bold text-slate-800 dark:text-slate-200 group-hover:text-primary-blue dark:group-hover:text-yellow-500 transition-colors duration-300 leading-snug">
                 {org.role}
               </h3>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -168,12 +168,12 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-16 md:py-20 relative overflow-hidden bg-transparent" 
+      className="py-16 md:py-20 relative bg-transparent" 
       ref={containerRef}
     >
       {/* Semi-transparent color overlay that tints the background without hiding the fluid blobs */}
       <div 
-        className="absolute inset-0 z-0 transition-colors duration-700 ease-in-out opacity-80 dark:opacity-60 mix-blend-multiply dark:mix-blend-screen"
+        className="absolute -inset-y-24 inset-x-0 z-0 transition-colors duration-700 ease-in-out opacity-80 dark:opacity-60 mix-blend-multiply dark:mix-blend-screen"
         style={{ backgroundColor: activeOverlay }}
       ></div>
 

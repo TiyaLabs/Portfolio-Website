@@ -142,9 +142,9 @@ function App() {
                   <About />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.04} effect="zoom" className="bg-white dark:bg-slate-900 [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] py-16 md:py-24 my-8 md:my-12 relative overflow-hidden transition-colors duration-700 shadow-xl z-20" id="resume" watermark="JOURNEY">
+                <SectionWrapper depth={0.04} effect="zoom" className="bg-white dark:bg-slate-900 [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] py-16 md:py-24 my-8 md:my-12 relative overflow-hidden transition-colors duration-700 shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)] z-20" id="resume" watermark="JOURNEY">
                   <div className="container mx-auto px-6 md:px-12 relative z-10">
-                    <div className="mb-24">
+                    <div className="mb-24 flex flex-col items-center text-center">
                       <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>
                       <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
                         Experience & <br/>
@@ -163,12 +163,12 @@ function App() {
                   <Projects />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.02} effect="fade" className="bg-slate-50 dark:bg-slate-900 [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 my-8 md:my-12 relative overflow-hidden z-20 shadow-xl" watermark="SKILLS">
+                <SectionWrapper depth={0.02} effect="fade" className="bg-slate-50 dark:bg-slate-900 [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 my-8 md:my-12 relative overflow-hidden z-20 shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)]" watermark="SKILLS">
                   <Skills />
                   <Organization />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white [border-radius:50%_50%_0_0/2rem_2rem_0_0] md:[border-radius:50%_50%_0_0/4rem_4rem_0_0] overflow-hidden transition-colors duration-700 relative z-30 pt-16 md:pt-20 mt-8 md:mt-12">
+                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white [clip-path:polygon(0_3rem,38%_3rem,42%_0,58%_0,62%_3rem,100%_3rem,100%_100%,0_100%)] md:[clip-path:polygon(0_5rem,38%_5rem,42%_0,58%_0,62%_5rem,100%_5rem,100%_100%,0_100%)] overflow-hidden transition-colors duration-700 relative z-30 pt-20 md:pt-28 mt-8 md:mt-12">
                   <Contact />
                   <Footer />
                 </SectionWrapper>
