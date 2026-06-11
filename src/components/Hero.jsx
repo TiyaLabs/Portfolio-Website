@@ -102,9 +102,9 @@ const Hero = () => {
   const isSplit = portfolioTheme === 'split';
 
   const leftClipPath = isSplit ? 
-    (hoverSide === 'ds' ? 'polygon(0 0, calc(55% + 1px) 0, calc(45% + 1px) 100%, 0 100%)' : 
-     hoverSide === 'gd' ? 'polygon(0 0, calc(45% + 1px) 0, calc(55% + 1px) 100%, 0 100%)' : 
-     'polygon(0 0, calc(50% + 1px) 0, calc(50% + 1px) 100%, 0 100%)') : 
+    (hoverSide === 'ds' ? 'polygon(0 0, 56% 0, 46% 100%, 0 100%)' : 
+     hoverSide === 'gd' ? 'polygon(0 0, 46% 0, 56% 100%, 0 100%)' : 
+     'polygon(0 0, 51% 0, 51% 100%, 0 100%)') : 
     'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 
   const rightClipPath = isSplit ? 

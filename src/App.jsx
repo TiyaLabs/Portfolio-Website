@@ -142,7 +142,7 @@ function App() {
                   <About />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.04} effect="zoom" className="bg-gradient-to-b from-transparent via-white/50 to-transparent dark:via-black/40 py-16 md:py-20 relative overflow-hidden transition-colors duration-700 backdrop-blur-sm" id="resume" watermark="JOURNEY">
+                <SectionWrapper depth={0.04} effect="zoom" className="bg-white dark:bg-slate-900/90 py-24 md:py-32 relative overflow-hidden transition-colors duration-700 [clip-path:polygon(0_0,100%_0,100%_calc(100%-4vw),0_100%)] z-20 -mb-[4vw]" id="resume" watermark="JOURNEY">
                   <div className="container mx-auto px-6 md:px-12 relative z-10">
                     <div className="mb-24">
                       <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>
@@ -163,12 +163,12 @@ function App() {
                   <Projects />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.02} effect="fade" className="bg-transparent transition-colors duration-700" watermark="SKILLS">
+                <SectionWrapper depth={0.02} effect="fade" className="bg-slate-50 dark:bg-slate-800/90 transition-colors duration-700 pt-24 md:pt-32 pb-32 md:pb-40 [clip-path:polygon(0_4vw,100%_0,100%_100%,0_calc(100%-4vw))] relative z-20 backdrop-blur-sm -mb-[4vw]" watermark="SKILLS">
                   <Skills />
                   <Organization />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white [border-radius:50%_50%_0_0/3rem_3rem_0_0] md:[border-radius:50%_50%_0_0/6rem_6rem_0_0] overflow-hidden transition-colors duration-700 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden transition-colors duration-700 relative z-30 pt-8 md:pt-12">
                   <Contact />
                   <Footer />
                 </SectionWrapper>
