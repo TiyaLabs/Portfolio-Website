@@ -142,7 +142,7 @@ function App() {
                   <About />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.04} effect="zoom" className="bg-white/50 dark:bg-black/20 py-16 md:py-20 relative overflow-hidden transition-colors duration-700 backdrop-blur-sm" id="resume" watermark="JOURNEY">
+                <SectionWrapper depth={0.04} effect="zoom" className="bg-gradient-to-b from-transparent via-white/50 to-transparent dark:via-black/40 py-16 md:py-20 relative overflow-hidden transition-colors duration-700 backdrop-blur-sm" id="resume" watermark="JOURNEY">
                   <div className="container mx-auto px-6 md:px-12 relative z-10">
                     <div className="mb-24">
                       <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>

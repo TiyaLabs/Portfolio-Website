@@ -168,7 +168,7 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-16 md:py-20 relative overflow-hidden border-y border-slate-200/50 dark:border-slate-800/50 bg-transparent" 
+      className="py-16 md:py-20 relative overflow-hidden bg-transparent" 
       ref={containerRef}
     >
       {/* Semi-transparent color overlay that tints the background without hiding the fluid blobs */}
