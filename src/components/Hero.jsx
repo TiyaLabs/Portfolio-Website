@@ -113,6 +113,14 @@ const Hero = () => {
      'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)') : 
     'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 
+  const blob1Color = isDS && !isSplit ? "bg-primary-blue/30 dark:bg-blue-500/30" : 
+                     isGD && !isSplit ? "bg-orange-500/30 dark:bg-yellow-500/30" : 
+                     "bg-primary-blue/20 dark:bg-primary-blue/30";
+  
+  const blob2Color = isDS && !isSplit ? "bg-blue-400/30 dark:bg-blue-400/30" : 
+                     isGD && !isSplit ? "bg-orange-600/30 dark:bg-yellow-600/30" : 
+                     "bg-soft-orange/20 dark:bg-yellow-500/30";
+
   return (
     <section id="home" className="relative h-screen min-h-[600px] flex flex-col justify-center overflow-hidden" ref={containerRef}>
       
@@ -167,12 +175,12 @@ const Hero = () => {
 
       {/* Blob Gradients */}
       <motion.div 
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-blue/20 dark:bg-primary-blue/30 rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen"
+        className={`absolute top-1/4 left-1/4 w-96 h-96 ${blob1Color} rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen transition-colors duration-700`}
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, 30, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-soft-orange/20 dark:bg-yellow-500/30 rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen"
+        className={`absolute bottom-1/4 right-1/4 w-96 h-96 ${blob2Color} rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen transition-colors duration-700`}
         animate={{ scale: [1, 1.3, 1], x: [0, -40, 0], y: [0, -50, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />

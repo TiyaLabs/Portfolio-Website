@@ -69,21 +69,24 @@ function App() {
   };
 
   // Determine global background based on theme
-  let globalBg = "bg-neutral-50 dark:bg-neutral-950";
-  let sectionBg = "bg-white dark:bg-neutral-900";
-  let sectionBgAlt = "bg-neutral-100 dark:bg-neutral-800";
+  let globalBg = "bg-neutral-50 dark:bg-black";
+  let sectionBg = "bg-white dark:bg-[#0a0a0a]";
+  let sectionBgAlt = "bg-neutral-100 dark:bg-[#111111]";
   let footerBg = "bg-neutral-900 dark:bg-black";
+  let shadowClass = "shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)]";
 
   if (portfolioTheme === 'ds') {
     globalBg = "bg-blue-50/50 dark:bg-[#081226]";
     sectionBg = "bg-white dark:bg-[#0d1b38]";
     sectionBgAlt = "bg-blue-50 dark:bg-[#0a152e]";
     footerBg = "bg-blue-900 dark:bg-[#040b17]";
+    shadowClass = "shadow-[0_0_40px_rgba(59,130,246,0.15)] dark:shadow-[0_0_40px_rgba(59,130,246,0.08)]";
   } else if (portfolioTheme === 'gd') {
     globalBg = "bg-orange-50/50 dark:bg-[#1a0f05]";
     sectionBg = "bg-white dark:bg-[#2a1808]";
     sectionBgAlt = "bg-orange-50 dark:bg-[#211306]";
     footerBg = "bg-orange-600 dark:bg-[#140801]";
+    shadowClass = "shadow-[0_0_40px_rgba(234,88,12,0.15)] dark:shadow-[0_0_40px_rgba(234,88,12,0.08)]";
   }
 
   return (
@@ -155,7 +158,7 @@ function App() {
                   <About />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0} effect="zoom" className={`${sectionBg} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] py-16 md:py-24 relative overflow-hidden transition-colors duration-700 shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)] z-30`} id="resume" watermark="JOURNEY">
+                <SectionWrapper depth={0} effect="zoom" className={`${sectionBg} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] py-16 md:py-24 relative overflow-hidden transition-colors duration-700 ${shadowClass} z-30`} id="resume" watermark="JOURNEY">
                   <div className="container mx-auto px-6 md:px-12 relative z-10">
                     <div className="mb-24 flex flex-col items-center text-center">
                       <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>
@@ -176,7 +179,7 @@ function App() {
                   <Projects />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0} effect="fade" className={`${sectionBgAlt} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 relative overflow-hidden z-30 shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)]`} watermark="SKILLS">
+                <SectionWrapper depth={0} effect="fade" className={`${sectionBgAlt} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 relative overflow-hidden z-30 ${shadowClass}`} watermark="SKILLS">
                   <Skills />
                   <Organization />
                 </SectionWrapper>
