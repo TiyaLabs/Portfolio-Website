@@ -1,0 +1,128 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@900,700,500,300,400&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-blue: #2563EB;
+  --color-soft-blue: #60A5FA;
+  --color-light-blue: #DBEAFE;
+  --color-deep-blue: #1E3A8A;
+  --color-soft-orange: #FB923C;
+  --color-soft-yellow: #FACC15;
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --font-sans: "Satoshi", sans-serif;
+  --font-display: "Clash Display", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 font-sans antialiased overflow-x-hidden selection:bg-slate-900 selection:text-white dark:selection:bg-white dark:selection:text-slate-900 transition-colors duration-500;
+  }
+  
+  /* Custom Cursor specifically for Dark Mode */
+  .dark body {
+    cursor: crosshair;
+  }
+  .dark a, .dark button {
+    cursor: cell;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400;
+  }
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-blue to-soft-blue;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Magic UI Marquee */
+  .marquee-container {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+  
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-reverse 25s linear infinite;
+  }
+  .marquee-container:hover .animate-marquee,
+  .marquee-container:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
+  .editorial-spacing {
+    word-spacing: 0.05em;
+    letter-spacing: -0.01em;
+  }
+
+  @keyframes morphFluid {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  }
+
+  @keyframes spinFluid {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .fluid-line-shape {
+    position: absolute;
+    border: 1px solid currentColor;
+    animation: morphFluid 15s ease-in-out infinite, spinFluid 25s linear infinite;
+    transform-origin: center;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+/* Lenis */
+html.lenis, html.lenis body {
+  height: auto;
+  width: 100vw;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
