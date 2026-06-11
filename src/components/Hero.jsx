@@ -102,9 +102,9 @@ const Hero = () => {
   const isSplit = portfolioTheme === 'split';
 
   const leftClipPath = isSplit ? 
-    (hoverSide === 'ds' ? 'polygon(0 0, 55% 0, 45% 100%, 0 100%)' : 
-     hoverSide === 'gd' ? 'polygon(0 0, 45% 0, 55% 100%, 0 100%)' : 
-     'polygon(0 0, 50% 0, 50% 100%, 0 100%)') : 
+    (hoverSide === 'ds' ? 'polygon(0 0, calc(55% + 1px) 0, calc(45% + 1px) 100%, 0 100%)' : 
+     hoverSide === 'gd' ? 'polygon(0 0, calc(45% + 1px) 0, calc(55% + 1px) 100%, 0 100%)' : 
+     'polygon(0 0, calc(50% + 1px) 0, calc(50% + 1px) 100%, 0 100%)') : 
     'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 
   const rightClipPath = isSplit ? 
@@ -246,7 +246,7 @@ const Hero = () => {
         </div>
 
         {/* Floating App Logos */}
-        <div className="absolute inset-0 z-40 pointer-events-none overflow-hidden hidden md:block">
+        <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden hidden md:block">
           {(isDS || isSplit) && dsIcons.map((item, index) => (
             <FloatingIcon key={item.id} item={item} isVisible={isDS} isSplit={isSplit} smoothMouseX={smoothMouseX} smoothMouseY={smoothMouseY} index={index} globalScrollY={scrollY} />
           ))}

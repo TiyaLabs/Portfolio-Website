@@ -168,7 +168,7 @@ function App() {
                   <Organization />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden transition-colors duration-700 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+                <SectionWrapper depth={0.03} effect="slideUp" className="bg-slate-900 dark:bg-black text-white [border-radius:50%_50%_0_0/3rem_3rem_0_0] md:[border-radius:50%_50%_0_0/6rem_6rem_0_0] overflow-hidden transition-colors duration-700 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
                   <Contact />
                   <Footer />
                 </SectionWrapper>
