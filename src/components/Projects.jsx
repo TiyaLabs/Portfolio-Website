@@ -173,7 +173,7 @@ const Projects = () => {
     >
       {/* Semi-transparent color overlay that tints the background without hiding the fluid blobs */}
       <div 
-        className="absolute -inset-y-24 inset-x-0 z-0 transition-colors duration-700 ease-in-out opacity-80 dark:opacity-60 mix-blend-multiply dark:mix-blend-screen"
+        className="absolute -inset-y-32 inset-x-0 z-0 transition-colors duration-700 ease-in-out opacity-[0.85]"
         style={{ backgroundColor: activeOverlay }}
       ></div>
 
