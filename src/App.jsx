@@ -6,12 +6,12 @@ import Education from './components/Education';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import Organization from './components/Organization';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 import TopographicBackground from './components/TopographicBackground';
 import SectionWrapper from './components/SectionWrapper';
+import { ContainerScroll } from './components/ui/container-scroll-animation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Database, PenTool, LayoutTemplate, Moon, Sun } from 'lucide-react';
 import Lenis from 'lenis';
@@ -72,20 +72,20 @@ function App() {
   let globalBg = "bg-neutral-50 dark:bg-black";
   let sectionBg = "bg-white dark:bg-[#0a0a0a]";
   let sectionBgAlt = "bg-neutral-100 dark:bg-[#111111]";
-  let footerBg = "bg-neutral-900 dark:bg-black";
+  let footerBg = "bg-black";
   let shadowClass = "shadow-[0_0_40px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(255,255,255,0.03)]";
 
   if (portfolioTheme === 'ds') {
     globalBg = "bg-blue-50/50 dark:bg-[#081226]";
     sectionBg = "bg-white dark:bg-[#0d1b38]";
     sectionBgAlt = "bg-blue-50 dark:bg-[#0a152e]";
-    footerBg = "bg-blue-900 dark:bg-[#040b17]";
+    footerBg = "bg-[#040b17]";
     shadowClass = "shadow-[0_0_40px_rgba(59,130,246,0.15)] dark:shadow-[0_0_40px_rgba(59,130,246,0.08)]";
   } else if (portfolioTheme === 'gd') {
     globalBg = "bg-orange-50/50 dark:bg-[#1a0f05]";
     sectionBg = "bg-white dark:bg-[#2a1808]";
     sectionBgAlt = "bg-orange-50 dark:bg-[#211306]";
-    footerBg = "bg-orange-600 dark:bg-[#140801]";
+    footerBg = "bg-[#140801]";
     shadowClass = "shadow-[0_0_40px_rgba(234,88,12,0.15)] dark:shadow-[0_0_40px_rgba(234,88,12,0.08)]";
   }
 
@@ -158,30 +158,32 @@ function App() {
                   <About />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0} effect="zoom" className={`${sectionBg} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] py-16 md:py-24 relative overflow-hidden transition-colors duration-700 ${shadowClass} z-30`} id="resume" watermark="JOURNEY">
-                  <div className="container mx-auto px-6 md:px-12 relative z-10">
-                    <div className="mb-24 flex flex-col items-center text-center">
-                      <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>
-                      <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-                        Experience & <br/>
-                        <span className="text-slate-400 dark:text-slate-500">Education</span>
-                      </h2>
-                    </div>
-
+                <SectionWrapper depth={0} effect="zoom" className="bg-transparent relative transition-colors duration-700 z-30" id="resume" watermark="JOURNEY">
+                  <ContainerScroll
+                    screenClassName={sectionBg}
+                    titleComponent={
+                      <div className="mb-4 md:mb-8 flex flex-col items-center text-center">
+                        <span className="text-sm font-bold text-soft-orange dark:text-yellow-500 tracking-widest uppercase mb-4 block">Journey</span>
+                        <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                          Experience & <br/>
+                          <span className="text-slate-400 dark:text-slate-500">Education</span>
+                        </h2>
+                      </div>
+                    }
+                  >
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                       <Experience />
                       <Education />
                     </div>
-                  </div>
+                  </ContainerScroll>
                 </SectionWrapper>
 
                 <SectionWrapper depth={0} effect="fade" className="bg-transparent -mt-16 md:-mt-24 -mb-16 md:-mb-24 pt-32 pb-32 md:pt-40 md:pb-40 relative z-20" watermark="PROJECTS">
                   <Projects />
                 </SectionWrapper>
                 
-                <SectionWrapper depth={0} effect="fade" className={`${sectionBgAlt} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 relative overflow-hidden z-30 ${shadowClass}`} watermark="SKILLS">
+                <SectionWrapper depth={0} effect="fade" className={`${sectionBgAlt} [border-radius:50%_50%_50%_50%/2rem_2rem_2rem_2rem] md:[border-radius:50%_50%_50%_50%/4rem_4rem_4rem_4rem] transition-colors duration-700 py-16 md:py-24 relative overflow-hidden z-30 ${shadowClass}`} watermark="SKILLS" watermarkPosition="top-[68%] -translate-y-1/2">
                   <Skills />
-                  <Organization />
                 </SectionWrapper>
                 
                 <SectionWrapper depth={0} effect="slideUp" className={`${footerBg} text-white transition-colors duration-700 relative z-20 pt-24 md:pt-32 -mt-16 md:-mt-24`}>

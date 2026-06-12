@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Database, PenTool, LayoutTemplate } from 'lucide-react';
+import { ArrowUpRight, Database, PenTool, LayoutTemplate, X, ExternalLink, Code } from 'lucide-react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { ThemeContext } from '../App';
@@ -124,6 +125,7 @@ const graphicDesignProjects = [
 const Projects = () => {
   const containerRef = useRef(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const { portfolioTheme, setPortfolioTheme, isDarkMode: globalDark } = useContext(ThemeContext);
   const [isDark, setIsDark] = useState(globalDark);
 
@@ -226,6 +228,7 @@ const Projects = () => {
                     className={`project-card group relative bg-white dark:bg-black/40 backdrop-blur-md rounded-[2rem] p-4 flex flex-col gap-6 cursor-pointer hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 hover:scale-[1.02] border border-slate-200 dark:border-white/10`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={() => setSelectedProject(project)}
                   >
                   {/* Image Container */}
                   <div className="w-full h-72 rounded-[1.5rem] overflow-hidden relative">
@@ -270,6 +273,74 @@ const Projects = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Project Detail Modal */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0a0a0a] rounded-[2rem] shadow-2xl z-10 border border-slate-200 dark:border-slate-800"
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 w-10 h-10 bg-white/50 dark:bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-slate-900 dark:text-white hover:bg-white dark:hover:bg-slate-800 transition-colors z-20"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="w-full h-64 sm:h-80 relative">
+                <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <span className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2 block">{selectedProject.category}</span>
+                  <h3 className="text-3xl sm:text-4xl font-display font-bold text-white leading-tight">{selectedProject.title}</h3>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedProject.tags.map((tag, i) => (
+                    <span key={i} className={`px-3 py-1 bg-slate-50 dark:bg-slate-800/50 border ${accentBorderClass} ${accentColorClass} rounded-full text-xs font-semibold`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-3">About this Project</h4>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                  This is a brief overview of the {selectedProject.title} project. It demonstrates expertise in {selectedProject.category} using modern techniques and tools. The repository contains the source code, data processing pipelines, and detailed documentation of the methodologies applied.
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <a href="https://github.com/Aufatir78" target="_blank" rel="noreferrer" className={`flex items-center gap-2 px-6 py-3 ${accentBgClass} text-white rounded-full text-sm font-bold hover:scale-105 transition-transform duration-300 shadow-lg`}>
+                    <Code size={18} />
+                    View Source Code
+                  </a>
+                  <a href="#" onClick={(e) => e.preventDefault()} className={`flex items-center gap-2 px-6 py-3 bg-transparent border ${accentBorderClass} ${accentColorClass} rounded-full text-sm font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300`}>
+                    <ExternalLink size={18} />
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>,
+      document.body
+      )}
     </section>
   );
 };

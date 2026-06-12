@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Code } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,15 +92,15 @@ const About = () => {
             </div>
 
             {/* Decorative Label */}
-            <div className="absolute bottom-10 -left-10 md:-left-20 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 flex items-center gap-4 z-20 hidden md:flex transition-colors duration-500">
-              <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-yellow-500 flex items-center justify-center transition-colors duration-500">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <a href="https://github.com/TiyaLabs" target="_blank" rel="noreferrer" className="absolute bottom-10 -left-10 md:-left-20 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 flex items-center gap-4 z-20 hidden md:flex hover:scale-105 transition-all duration-500 group cursor-pointer">
+              <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-yellow-500 flex items-center justify-center transition-colors duration-500 group-hover:bg-primary-blue dark:group-hover:bg-yellow-400">
+                <Code size={20} className="text-white dark:text-slate-900" />
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">Status</p>
-                <p className="font-display font-bold text-slate-900 dark:text-white transition-colors duration-500">Exploring Ideas</p>
+                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1 group-hover:text-primary-blue dark:group-hover:text-yellow-500 transition-colors duration-300">Code</p>
+                <p className="font-display font-bold text-slate-900 dark:text-white transition-colors duration-500">GitHub Repo</p>
               </div>
-            </div>
+            </a>
           </div>
 
         </div>

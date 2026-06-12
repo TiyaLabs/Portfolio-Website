@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -44,11 +44,11 @@ const Experience = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-12" ref={containerRef}>
+    <div className="flex flex-col gap-12 h-full" ref={containerRef}>
       <h3 className="text-xl font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-4 border-b border-slate-200 dark:border-slate-800 pb-4">Experience</h3>
       
       {experiences.map((exp, index) => (
-        <div key={index} className="exp-item group relative grid grid-cols-12 gap-4 items-start">
+        <div key={index} className={`exp-item group relative grid grid-cols-12 gap-4 items-start ${index === 0 ? 'lg:min-h-[11rem]' : ''}`}>
           <div className="col-span-3 md:col-span-4">
             <span className="text-3xl md:text-5xl font-display font-bold text-slate-200 dark:text-slate-800 group-hover:text-primary-blue dark:group-hover:text-yellow-500 transition-colors duration-500">
               '{exp.year.slice(2)}

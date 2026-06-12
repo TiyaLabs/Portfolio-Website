@@ -72,26 +72,26 @@ const Hero = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
-      
-      tl.fromTo(".title1-char", 
+
+      tl.fromTo(".title1-char",
         { y: 100, opacity: 0, rotateZ: 10 },
         { y: 0, opacity: 1, rotateZ: 0, duration: 1, stagger: 0.04, ease: "power4.out", delay: 0.2 }
       )
-      .fromTo(".title2-char", 
-        { y: 100, opacity: 0, rotateZ: -10 },
-        { y: 0, opacity: 1, rotateZ: 0, duration: 1, stagger: 0.04, ease: "power4.out" },
-        "-=0.8"
-      )
-      .fromTo(".hero-text",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.6"
-      )
-      .fromTo(".hero-element", 
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-        "-=0.4"
-      );
+        .fromTo(".title2-char",
+          { y: 100, opacity: 0, rotateZ: -10 },
+          { y: 0, opacity: 1, rotateZ: 0, duration: 1, stagger: 0.04, ease: "power4.out" },
+          "-=0.8"
+        )
+        .fromTo(".hero-text",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+          "-=0.6"
+        )
+        .fromTo(".hero-element",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+          "-=0.4"
+        );
     }, containerRef);
 
     return () => ctx.revert();
@@ -101,45 +101,45 @@ const Hero = () => {
   const isGD = portfolioTheme === 'gd' || hoverSide === 'gd';
   const isSplit = portfolioTheme === 'split';
 
-  const leftClipPath = isSplit ? 
-    (hoverSide === 'ds' ? 'polygon(0 0, calc(55% + 2px) 0, calc(45% + 2px) 100%, 0 100%)' : 
-     hoverSide === 'gd' ? 'polygon(0 0, calc(45% + 2px) 0, calc(55% + 2px) 100%, 0 100%)' : 
-     'polygon(0 0, calc(50% + 2px) 0, calc(50% + 2px) 100%, 0 100%)') : 
+  const leftClipPath = isSplit ?
+    (hoverSide === 'ds' ? 'polygon(0 0, calc(55% + 2px) 0, calc(45% + 2px) 100%, 0 100%)' :
+      hoverSide === 'gd' ? 'polygon(0 0, calc(45% + 2px) 0, calc(55% + 2px) 100%, 0 100%)' :
+        'polygon(0 0, calc(50% + 2px) 0, calc(50% + 2px) 100%, 0 100%)') :
     'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 
-  const rightClipPath = isSplit ? 
-    (hoverSide === 'gd' ? 'polygon(45% 0, 100% 0, 100% 100%, 55% 100%)' : 
-     hoverSide === 'ds' ? 'polygon(55% 0, 100% 0, 100% 100%, 45% 100%)' : 
-     'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)') : 
+  const rightClipPath = isSplit ?
+    (hoverSide === 'gd' ? 'polygon(45% 0, 100% 0, 100% 100%, 55% 100%)' :
+      hoverSide === 'ds' ? 'polygon(55% 0, 100% 0, 100% 100%, 45% 100%)' :
+        'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)') :
     'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
 
-  const blob1Color = isDS && !isSplit ? "bg-primary-blue/30 dark:bg-blue-500/30" : 
-                     isGD && !isSplit ? "bg-orange-500/30 dark:bg-yellow-500/30" : 
-                     "bg-primary-blue/20 dark:bg-primary-blue/30";
-  
-  const blob2Color = isDS && !isSplit ? "bg-blue-400/30 dark:bg-blue-400/30" : 
-                     isGD && !isSplit ? "bg-orange-600/30 dark:bg-yellow-600/30" : 
-                     "bg-soft-orange/20 dark:bg-yellow-500/30";
+  const blob1Color = isDS && !isSplit ? "bg-primary-blue/30 dark:bg-blue-500/30" :
+    isGD && !isSplit ? "bg-orange-500/30 dark:bg-yellow-500/30" :
+      "bg-primary-blue/20 dark:bg-primary-blue/30";
+
+  const blob2Color = isDS && !isSplit ? "bg-blue-400/30 dark:bg-blue-400/30" :
+    isGD && !isSplit ? "bg-orange-600/30 dark:bg-yellow-600/30" :
+      "bg-soft-orange/20 dark:bg-yellow-500/30";
 
   return (
     <section id="home" className="relative h-screen min-h-[600px] flex flex-col justify-center overflow-hidden" ref={containerRef}>
-      
+
       {/* Subtle Noise Background */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0 opacity-[0.15] dark:opacity-[0.08] pointer-events-none"
-        style={{ 
-          backgroundImage: 'radial-gradient(circle at center, #888 1px, transparent 1px)', 
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, #888 1px, transparent 1px)',
           backgroundSize: '40px 40px',
-          y: bgY 
+          y: bgY
         }}
       />
 
       {/* Dynamic Background Halves */}
       <div className="absolute inset-0 z-0 w-full h-full pointer-events-auto flex">
-        <div 
+        <div
           className="absolute inset-0 bg-primary-blue/5 dark:bg-primary-blue/10 cursor-pointer transition-all duration-700 ease-out z-10"
-          style={{ 
-            clipPath: leftClipPath, 
+          style={{
+            clipPath: leftClipPath,
             opacity: (isDS || isSplit) ? 1 : 0,
             pointerEvents: (portfolioTheme === 'split' || portfolioTheme === 'ds') ? 'auto' : 'none'
           }}
@@ -147,10 +147,10 @@ const Hero = () => {
           onMouseLeave={() => setHoverSide(null)}
           onClick={() => setPortfolioTheme('ds')}
         />
-        <div 
+        <div
           className="absolute inset-0 bg-soft-orange/5 dark:bg-yellow-500/10 cursor-pointer transition-all duration-700 ease-out z-10"
-          style={{ 
-            clipPath: rightClipPath, 
+          style={{
+            clipPath: rightClipPath,
             opacity: (isGD || isSplit) ? 1 : 0,
             pointerEvents: (portfolioTheme === 'split' || portfolioTheme === 'gd') ? 'auto' : 'none'
           }}
@@ -161,32 +161,32 @@ const Hero = () => {
       </div>
 
       {/* Side Vertical Texts */}
-      <div 
+      <div
         className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[40%] -rotate-90 origin-center transition-all duration-700 ease-out z-20 pointer-events-none mix-blend-overlay ${(hoverSide === 'ds' && portfolioTheme === 'split') ? 'opacity-100' : 'opacity-0'}`}
       >
         <span className="text-[15vh] font-display font-black text-primary-blue whitespace-nowrap opacity-20 dark:opacity-30">DATA SCIENCE</span>
       </div>
 
-      <div 
+      <div
         className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-[40%] rotate-90 origin-center transition-all duration-700 ease-out z-20 pointer-events-none mix-blend-overlay ${(hoverSide === 'gd' && portfolioTheme === 'split') ? 'opacity-100' : 'opacity-0'}`}
       >
         <span className="text-[15vh] font-display font-black text-soft-orange whitespace-nowrap opacity-20 dark:opacity-30">GRAPHIC DESIGN</span>
       </div>
 
       {/* Blob Gradients */}
-      <motion.div 
+      <motion.div
         className={`absolute top-1/4 left-1/4 w-96 h-96 ${blob1Color} rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen transition-colors duration-700`}
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, 30, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div 
+      <motion.div
         className={`absolute bottom-1/4 right-1/4 w-96 h-96 ${blob2Color} rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen transition-colors duration-700`}
         animate={{ scale: [1, 1.3, 1], x: [0, -40, 0], y: [0, -50, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
 
       <div className="container relative z-20 mx-auto px-6 md:px-12 flex flex-col items-center justify-center h-full pointer-events-none pt-24 pb-8 md:pb-12">
-        
+
         {/* Left Side: Typography */}
         <div className="w-full flex flex-col justify-center h-full z-30 pointer-events-auto">
           <div className="flex justify-between items-start mb-6 hero-element">
@@ -200,7 +200,7 @@ const Hero = () => {
             <div className="text-right hidden md:block max-w-xs">
               <p className="text-sm text-slate-500 dark:text-slate-400 editorial-spacing leading-relaxed transition-colors">
                 Based in Surabaya, Indonesia.
-                <br/>Crafting data-driven digital experiences.
+                <br />Crafting data-driven digital experiences.
               </p>
             </div>
           </div>
@@ -227,13 +227,13 @@ const Hero = () => {
           <motion.div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-4 hero-element" style={{ y: textY }}>
             <p className="hero-text text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium editorial-spacing leading-snug transition-colors duration-500 mb-8 md:mb-0 max-w-2xl">
               <span className={`transition-colors duration-500 ${isDS && !isSplit ? 'text-primary-blue font-bold' : ''}`}>Data Science Student</span>
-              {' & '} 
+              {' & '}
               <span className={`transition-colors duration-500 ${isGD && !isSplit ? 'text-soft-orange font-bold' : ''}`}>Graphic Designer</span>
               {' turning complex data into '}
               <span className="text-primary-blue dark:text-blue-400 relative inline-block group cursor-pointer" onClick={() => setPortfolioTheme('ds')}>
                 meaningful insights
                 <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary-blue dark:bg-blue-400 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-              </span> 
+              </span>
               {' and crafting '}
               <span className="text-soft-orange dark:text-yellow-500 relative inline-block group cursor-pointer" onClick={() => setPortfolioTheme('gd')}>
                 visual experiences
@@ -241,8 +241,8 @@ const Hero = () => {
               </span>.
             </p>
 
-            <motion.a 
-              href="#projects" 
+            <motion.a
+              href="#projects"
               className={`w-32 h-32 md:w-40 md:h-40 shrink-0 rounded-full text-white dark:text-slate-900 flex flex-col items-center justify-center gap-2 transition-colors duration-500 group relative z-50 ${isDS && !isSplit ? 'bg-primary-blue hover:bg-slate-900' : isGD && !isSplit ? 'bg-soft-orange dark:bg-yellow-500 hover:bg-slate-900 dark:hover:bg-white' : 'bg-slate-900 dark:bg-slate-200 hover:bg-primary-blue'}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
