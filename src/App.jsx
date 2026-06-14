@@ -15,6 +15,7 @@ import { ContainerScroll } from './components/ui/container-scroll-animation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Database, PenTool, LayoutTemplate, Moon, Sun } from 'lucide-react';
 import Lenis from 'lenis';
+import { Analytics } from '@vercel/analytics/react';
 
 export const ThemeContext = createContext();
 
@@ -91,6 +92,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ portfolioTheme, setPortfolioTheme, isDarkMode }}>
+      <Analytics />
       {/* Floating Sidebar Switcher */}
       {!loading && (
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4">
